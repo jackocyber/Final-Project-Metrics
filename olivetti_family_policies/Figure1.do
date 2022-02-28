@@ -1,6 +1,6 @@
 *This do file re-creates Figure 1 in Olivetti and Petrongolo "The Economic Consequences of Family Policies: Lessons from a Century of Legislation in High-Income Countries"
 
-u Figure1.dta, clear
+use "C:\Users\Public\Final-Project-Metrics\olivetti_family_policies\Figure1.dta"
 
  	
 **** Sort by employment in 2010s
@@ -8,7 +8,7 @@ sort femptopop6
 g country2=_n
 labmask country2, val(country) // ssc install labmask
 
-eparate femptopop6, by(country == "United States")
+separate femptopop6, by(country == "United States")
 
 label variable femptopop60 "2010s"
 label variable femptopop61 " "
