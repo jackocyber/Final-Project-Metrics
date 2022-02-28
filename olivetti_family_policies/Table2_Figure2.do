@@ -1,6 +1,6 @@
 *This do file re-creates Table 2, Figure 2 (and also online Appendix Tables A3 and A5) in Olivetti and Petrongolo "The Economic Consequences of Family Policies: Lessons from a Century of Legislation in High-Income Countries"
 
-u Table2_Figure2.dta, clear
+use "C:\Users\Public\Final-Project-Metrics\olivetti_family_policies\Table2_Figure2.dta"
 
 
 *Table 2: Institutions and Women's Outcomes 
