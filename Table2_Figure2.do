@@ -69,7 +69,7 @@ twoway (scatter max_job_protected Egap2554 if NorthAmerica == 1, mcolor(red) msy
  (scatter max_job_protected Egap2554 if country == "DK",mcolor(orange) msize(small) mlabel(country) mlabsize(vsmall) mlabcolor(navy) mlabposition(6) ) ///
  (scatter max_job_protected  Egap2554 if other == 1, mcolor(purple) msymbol(circle) mlabel(country) mlabsize(vsmall) mlabcolor(grey) mlabposition(1)) ///
  (scatter max_job_protected  Egap2554 if Asia == 1, mcolor(green) msymbol(triangle) mlabel(country) mlabsize(vsmall) mlabcolor(green) mlabposition(1)), ytitle(Maximum weeks of job-protected leave available to mothers, size(small)) xtitle("Gender employment gap, age group 25 - 54", size(small)) legend(off)
-graph export "max_job_protected&Egap2554.pdf", replace
+graph export "Figure2.pdf", replace
 
 ****************
 *Table A3: institutions and gender norms 

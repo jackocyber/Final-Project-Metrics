@@ -26,5 +26,5 @@ scatter femptopop4 country2, ms(X) mcolor(green) || ///
  scatter femptopop_1980 country2, ms(th) mcolor(blue) || /// 
 scatter femptopop_1970 country2, ms(th) mcolor(red) legend(row(1)) ytitle(Female Employment Rate) 
 
-
+graph export "Figure1.pdf", replace
 
