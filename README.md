@@ -1,6 +1,6 @@
 # Final-Project-Metrics
 
-# Our Paper
+## Our Replication Paper
 The Economic Consequences of Family Policies: Lessons from a Century of Legislation in High-Income Countries
 
 https://pubs.aeaweb.org/doi/pdfplus/10.1257/jep.31.1.205 
