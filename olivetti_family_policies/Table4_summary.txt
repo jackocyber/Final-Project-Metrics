@@ -1,0 +1,14 @@
+		(1)	(2)	(3)	(4)	(5)	(6)	(7)
+		mean	mean	mean	mean	mean	mean	mean
+VARIABLES	LABELS	(sd)	(sd)	(sd)	(sd)	(sd)	(sd)	(sd)
+								
+W_gap	Gender wage gap (%)			44.335		39.981		42.639
+				(16.751)		(14.386)		(8.284)
+total_protected	Maximum job-protected leave available to mothers (weeks)	75.151	75.430	81.995	75.015	81.995	75.015	81.995
+		(53.133)	(53.554)	(54.461)	(52.978)	(54.461)	(52.978)	(54.461)
+total_sq	total_sq	84.689	85.519	96.793	84.284	96.793	84.284	96.793
+		(103.961)	(104.669)	(106.993)	(103.715)	(106.993)	(103.715)	(106.993)
+Femp_rate	Female employment to population ratio (%)	63.815	46.604		65.734		78.697	
+		(16.651)	(12.322)		(10.571)		(7.137)	
+								
+Observations		1,500	492	300	504	300	504	300

@@ -1,12 +1,12 @@
 *This do file re-creates Table 2, Figure 2 (and also online Appendix Tables A3 and A5) in Olivetti and Petrongolo "The Economic Consequences of Family Policies: Lessons from a Century of Legislation in High-Income Countries"
 
-use "C:\Users\Public\Final-Project-Metrics\olivetti_family_policies\Table2_Figure2.dta"
+u Table2_Figure2.dta, clear
 
 
 *Table 2: Institutions and Women's Outcomes 
 foreach x in Epop2554 Egap2554 Wgap TFR {
-		pwcorr `x' max_job_protected tot_paid_leave_moth_15 repl_ratio_mother_15 paid_father_perc_total ///
-					ECEC_11 accumulatedaysoff_startend_13, sig obs
+		pwcorr `x' max_job_protected tot_paid_leave_moth repl_ratio_mother paid_father_perc_total ///
+					ECEC accumulatedaysoff_startend, sig obs
 }
 
 

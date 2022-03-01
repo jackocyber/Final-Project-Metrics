@@ -1,6 +1,6 @@
 *This do file re-creates Figure 1 in Olivetti and Petrongolo "The Economic Consequences of Family Policies: Lessons from a Century of Legislation in High-Income Countries"
 
-use "C:\Users\Public\Final-Project-Metrics\olivetti_family_policies\Figure1.dta"
+u Figure1.dta, clear
 
  	
 **** Sort by employment in 2010s
