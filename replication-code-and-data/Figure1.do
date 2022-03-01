@@ -28,3 +28,5 @@ scatter femptopop_1970 country2, ms(th) mcolor(red) legend(row(1)) ytitle(Female
 
 graph export "Figure1.pdf", replace
 
+
+
