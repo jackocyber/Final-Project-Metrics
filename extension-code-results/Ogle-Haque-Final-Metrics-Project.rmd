@@ -1,0 +1,14 @@
+---
+title: "ECON 21110 - Applied Microeconometrics - Final Project"
+author: "Jack Ogle and Eva Haque"
+output:
+  pdf_document:
+    keep_tex: true
+header-includes:
+   - \usepackage{dcolumn}
+   - \usepackage{float}
+classoption: landscape
+geometry: margin=1in
+fontsize: 12pt
+---
+
