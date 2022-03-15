@@ -1,0 +1,84 @@
+---
+title: 'Figures for Final Project'
+author: "Jack Ogle"
+date: "3/3/2022"
+output: pdf_document
+header-includes:
+   - \usepackage{dcolumn}
+   - \usepackage{float}
+classoption: landscape
+geometry: margin=1in
+fontsize: 12pt
+---
+
+```{r, include=FALSE}
+library(tidyverse)
+library(haven)
+library(stargazer)
+library(tinytex)
+library(foreign)
+library(multiwayvcov)
+library(lmtest)
+library(rdrobust)
+
+
+# loading the data
+wage_gap =  read.csv('/Users/matthewogle/downloads/GENDER_EMP_Wage.csv')
+ 
+employ = read.csv('/Users/matthewogle/downloads/GENDER_EMP_employment-rate.csv')
+
+female_employ <- subset(employ, Indicator == 'Employment rate, by sex and age group, quarterly data' & Sex == 'Women')
+
+max_weeks_leave =  read.csv('/Users/matthewogle/downloads/GENDER_EMP_Length-of-maternity-leave.csv')
+
+# getting rid of the averages from the data set at the bottom
+max_weeks_leave = max_weeks_leave[1:2846,]
+ 
+# The issue is that we need to subset by Czech Republic, Hungary, Iceland, Korea, Mexico, Poland, Slovakia, and Turkey
+ 
+ # Regression 1 We conduct the same model regression from Table 3
+ 
+ # Regression 2 We conduct a similar regression looking at the same variables but with countries that have had significant changes in family policies since 2010
+ 
+max_weeks_leave$value_sqd = (max_weeks_leave$Value^2) / 100
+
+model_1 = lm(female_employ$Value ~ max_weeks_leave$Value + max_weeks_leave$value_sqd)
+
+stargazer(model_1, title="Regression Results", align=TRUE, notes = "Standard errors in parentheses", notes.align = "l")
+
+
+
+```
+
+
+\begin{table}[H] \centering 
+  \caption{Regression Results} 
+  \label{} 
+\begin{tabular}{@{\extracolsep{5pt}}lD{.}{.}{-3} } 
+\\[-1.8ex]\hline 
+\hline \\[-1.8ex] 
+ & \multicolumn{1}{c}{\textit{Dependent variable:}} \\ 
+\cline{2-2} 
+\\[-1.8ex] & \multicolumn{1}{c}{Female Employment Rate} \\ 
+\hline \\[-1.8ex] 
+ Maximum weeks of Job-Protected Leave & -0.036 \\ 
+  & (0.028) \\ 
+  & \\ 
+ Maximum weeks of Job-Protected Leave squared / 100 & 0.012 \\ 
+  & (0.019) \\ 
+  & \\ 
+ Constant & 56.983^{***} \\ 
+  & (0.541) \\ 
+  & \\ 
+\hline \\[-1.8ex] 
+Observations & \multicolumn{1}{c}{2,846} \\ 
+R$^{2}$ & \multicolumn{1}{c}{0.002} \\ 
+Adjusted R$^{2}$ & \multicolumn{1}{c}{0.001} \\ 
+Residual Std. Error & \multicolumn{1}{c}{18.452 (df = 2843)} \\ 
+F Statistic & \multicolumn{1}{c}{2.395$^{*}$ (df = 2; 2843)} \\ 
+\hline 
+\hline \\[-1.8ex] 
+\textit{Note:}  & \multicolumn{1}{l}{$^{*}$p$<$0.1; $^{**}$p$<$0.05; $^{***}$p$<$0.01} \\ 
+ & \multicolumn{1}{l}{Standard errors in parentheses} \\ 
+\end{tabular} 
+\end{table} 
