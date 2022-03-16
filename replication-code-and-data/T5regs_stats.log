@@ -2,7 +2,7 @@
       name:  <unnamed>
        log:  C:\Users\jackogle\Final-Project-Metrics\replication-code-and-data\T5regs_stats.log
   log type:  text
- opened on:  15 Mar 2022, 16:56:04
+ opened on:  15 Mar 2022, 19:44:53
 
 . 
 . 
@@ -56,6 +56,38 @@
  36. log off
  37. drop country_tag-year_max
  38. 
+. xi: reg `x' total_protected total_sq perc_total_paid avg_payment ecec interact_total_ecec i.year i.country, robust
+ 39. outreg2 using Table5.xls, append ctitle("`label'") label dec(3) keep(total_protected total_sq perc_total_paid avg_payment ecec interact_total_e
+> cec)
+ 40. outreg2 using Table5_summary.xls, append ctitle("`label'") label dec(3) sum drop(_I*)
+ 41. 
+. egen country_tag=tag(country) if e(sample)
+ 42. egen year_min=min(year) if e(sample), by(country)
+ 43. egen year_max=max(year) if e(sample), by(country)
+ 44. 
+. log on
+ 45. sum country_tag if e(sample) & country_tag==1
+ 46. sum year if e(sample)
+ 47. list country year_min year_max if country_tag==1, sep(0)
+ 48. log off
+ 49. drop country_tag-year_max
+ 50. 
+. xi: reg `x' total_protected total_sq perc_total_paid avg_payment ecec interact_per_paid_pay_rate i.year i.country, robust
+ 51. outreg2 using Table5.xls, append ctitle("`label'") label dec(3) keep(total_protected total_sq perc_total_paid avg_payment ecec interact_per_pai
+> d_pay_rate)
+ 52. outreg2 using Table5_summary.xls, append ctitle("`label'") label dec(3) sum drop(_I*)
+ 53. 
+. egen country_tag=tag(country) if e(sample)
+ 54. egen year_min=min(year) if e(sample), by(country)
+ 55. egen year_max=max(year) if e(sample), by(country)
+ 56. 
+. log on
+ 57. sum country_tag if e(sample) & country_tag==1
+ 58. sum year if e(sample)
+ 59. list country year_min year_max if country_tag==1, sep(0)
+ 60. log off
+ 61. drop country_tag-year_max
+ 62. 
 . }
 i.year            _Iyear_1960-2014    (naturally coded; _Iyear_1960 omitted)
 i.country         _Icountry_1-31      (_Icountry_1 for country==AUS omitted)
@@ -330,13 +362,13 @@ dir : seeout
       name:  <unnamed>
        log:  C:\Users\jackogle\Final-Project-Metrics\replication-code-and-data\T5regs_stats.log
   log type:  text
- paused on:  15 Mar 2022, 16:56:04
+ paused on:  15 Mar 2022, 19:44:54
 ----------------------------------------------------------------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------------------------------------------------------
       name:  <unnamed>
        log:  C:\Users\jackogle\Final-Project-Metrics\replication-code-and-data\T5regs_stats.log
   log type:  text
-resumed on:  15 Mar 2022, 16:56:04
+resumed on:  15 Mar 2022, 19:44:54
 
     Variable |        Obs        Mean    Std. Dev.       Min        Max
 -------------+---------------------------------------------------------
@@ -375,13 +407,13 @@ resumed on:  15 Mar 2022, 16:56:04
       name:  <unnamed>
        log:  C:\Users\jackogle\Final-Project-Metrics\replication-code-and-data\T5regs_stats.log
   log type:  text
- paused on:  15 Mar 2022, 16:56:04
+ paused on:  15 Mar 2022, 19:44:54
 ----------------------------------------------------------------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------------------------------------------------------
       name:  <unnamed>
        log:  C:\Users\jackogle\Final-Project-Metrics\replication-code-and-data\T5regs_stats.log
   log type:  text
-resumed on:  15 Mar 2022, 16:56:05
+resumed on:  15 Mar 2022, 19:44:55
 
     Variable |        Obs        Mean    Std. Dev.       Min        Max
 -------------+---------------------------------------------------------
@@ -420,13 +452,103 @@ resumed on:  15 Mar 2022, 16:56:05
       name:  <unnamed>
        log:  C:\Users\jackogle\Final-Project-Metrics\replication-code-and-data\T5regs_stats.log
   log type:  text
- paused on:  15 Mar 2022, 16:56:05
+ paused on:  15 Mar 2022, 19:44:55
 ----------------------------------------------------------------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------------------------------------------------------
       name:  <unnamed>
        log:  C:\Users\jackogle\Final-Project-Metrics\replication-code-and-data\T5regs_stats.log
   log type:  text
-resumed on:  15 Mar 2022, 16:56:05
+resumed on:  15 Mar 2022, 19:44:55
+
+    Variable |        Obs        Mean    Std. Dev.       Min        Max
+-------------+---------------------------------------------------------
+ country_tag |         22           1           0          1          1
+
+    Variable |        Obs        Mean    Std. Dev.       Min        Max
+-------------+---------------------------------------------------------
+        year |        667     1993.72    10.78639       1970       2010
+
+      +-------------------------------+
+      | country   year_min   year_max |
+      |-------------------------------|
+  38. |     AUS       1997       2010 |
+  90. |     AUT       1994       2010 |
+ 134. |     BEL       1983       2010 |
+ 182. |     CAN       1976       2010 |
+ 252. |     CHE       1991       2010 |
+ 341. |     DEU       1970       2010 |
+ 409. |     DNK       1983       2010 |
+ 453. |     ESP       1972       2010 |
+ 506. |     FIN       1970       2010 |
+ 574. |     FRA       1983       2010 |
+ 630. |     GBR       1984       2010 |
+ 684. |     GRC       1983       2010 |
+ 792. |     IRL       1981       2010 |
+ 891. |     ITA       1970       2010 |
+ 946. |     JPN       1970       2010 |
+1113. |     LUX       1983       2010 |
+1211. |     NLD       1971       2010 |
+1267. |     NOR       1972       2010 |
+1352. |     NZL       2002       2010 |
+1434. |     PRT       1974       2010 |
+1540. |     SWE       1970       2010 |
+1674. |     USA       1994       2010 |
+      +-------------------------------+
+      name:  <unnamed>
+       log:  C:\Users\jackogle\Final-Project-Metrics\replication-code-and-data\T5regs_stats.log
+  log type:  text
+ paused on:  15 Mar 2022, 19:44:55
+----------------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  C:\Users\jackogle\Final-Project-Metrics\replication-code-and-data\T5regs_stats.log
+  log type:  text
+resumed on:  15 Mar 2022, 19:44:56
+
+    Variable |        Obs        Mean    Std. Dev.       Min        Max
+-------------+---------------------------------------------------------
+ country_tag |         22           1           0          1          1
+
+    Variable |        Obs        Mean    Std. Dev.       Min        Max
+-------------+---------------------------------------------------------
+        year |        667     1993.72    10.78639       1970       2010
+
+      +-------------------------------+
+      | country   year_min   year_max |
+      |-------------------------------|
+  38. |     AUS       1997       2010 |
+  90. |     AUT       1994       2010 |
+ 134. |     BEL       1983       2010 |
+ 182. |     CAN       1976       2010 |
+ 252. |     CHE       1991       2010 |
+ 341. |     DEU       1970       2010 |
+ 409. |     DNK       1983       2010 |
+ 453. |     ESP       1972       2010 |
+ 506. |     FIN       1970       2010 |
+ 574. |     FRA       1983       2010 |
+ 630. |     GBR       1984       2010 |
+ 684. |     GRC       1983       2010 |
+ 792. |     IRL       1981       2010 |
+ 891. |     ITA       1970       2010 |
+ 946. |     JPN       1970       2010 |
+1113. |     LUX       1983       2010 |
+1211. |     NLD       1971       2010 |
+1267. |     NOR       1972       2010 |
+1352. |     NZL       2002       2010 |
+1434. |     PRT       1974       2010 |
+1540. |     SWE       1970       2010 |
+1674. |     USA       1994       2010 |
+      +-------------------------------+
+      name:  <unnamed>
+       log:  C:\Users\jackogle\Final-Project-Metrics\replication-code-and-data\T5regs_stats.log
+  log type:  text
+ paused on:  15 Mar 2022, 19:44:56
+----------------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  C:\Users\jackogle\Final-Project-Metrics\replication-code-and-data\T5regs_stats.log
+  log type:  text
+resumed on:  15 Mar 2022, 19:44:56
 
     Variable |        Obs        Mean    Std. Dev.       Min        Max
 -------------+---------------------------------------------------------
@@ -473,13 +595,13 @@ resumed on:  15 Mar 2022, 16:56:05
       name:  <unnamed>
        log:  C:\Users\jackogle\Final-Project-Metrics\replication-code-and-data\T5regs_stats.log
   log type:  text
- paused on:  15 Mar 2022, 16:56:05
+ paused on:  15 Mar 2022, 19:44:56
 ----------------------------------------------------------------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------------------------------------------------------
       name:  <unnamed>
        log:  C:\Users\jackogle\Final-Project-Metrics\replication-code-and-data\T5regs_stats.log
   log type:  text
-resumed on:  15 Mar 2022, 16:56:06
+resumed on:  15 Mar 2022, 19:44:57
 
     Variable |        Obs        Mean    Std. Dev.       Min        Max
 -------------+---------------------------------------------------------
@@ -518,13 +640,13 @@ resumed on:  15 Mar 2022, 16:56:06
       name:  <unnamed>
        log:  C:\Users\jackogle\Final-Project-Metrics\replication-code-and-data\T5regs_stats.log
   log type:  text
- paused on:  15 Mar 2022, 16:56:06
+ paused on:  15 Mar 2022, 19:44:57
 ----------------------------------------------------------------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------------------------------------------------------
       name:  <unnamed>
        log:  C:\Users\jackogle\Final-Project-Metrics\replication-code-and-data\T5regs_stats.log
   log type:  text
-resumed on:  15 Mar 2022, 16:56:06
+resumed on:  15 Mar 2022, 19:44:57
 
     Variable |        Obs        Mean    Std. Dev.       Min        Max
 -------------+---------------------------------------------------------
@@ -563,13 +685,103 @@ resumed on:  15 Mar 2022, 16:56:06
       name:  <unnamed>
        log:  C:\Users\jackogle\Final-Project-Metrics\replication-code-and-data\T5regs_stats.log
   log type:  text
- paused on:  15 Mar 2022, 16:56:06
+ paused on:  15 Mar 2022, 19:44:57
 ----------------------------------------------------------------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------------------------------------------------------
       name:  <unnamed>
        log:  C:\Users\jackogle\Final-Project-Metrics\replication-code-and-data\T5regs_stats.log
   log type:  text
-resumed on:  15 Mar 2022, 16:56:07
+resumed on:  15 Mar 2022, 19:44:58
+
+    Variable |        Obs        Mean    Std. Dev.       Min        Max
+-------------+---------------------------------------------------------
+ country_tag |         22           1           0          1          1
+
+    Variable |        Obs        Mean    Std. Dev.       Min        Max
+-------------+---------------------------------------------------------
+        year |        667     1993.72    10.78639       1970       2010
+
+      +-------------------------------+
+      | country   year_min   year_max |
+      |-------------------------------|
+  38. |     AUS       1997       2010 |
+  90. |     AUT       1994       2010 |
+ 134. |     BEL       1983       2010 |
+ 182. |     CAN       1976       2010 |
+ 252. |     CHE       1991       2010 |
+ 341. |     DEU       1970       2010 |
+ 409. |     DNK       1983       2010 |
+ 453. |     ESP       1972       2010 |
+ 506. |     FIN       1970       2010 |
+ 574. |     FRA       1983       2010 |
+ 630. |     GBR       1984       2010 |
+ 684. |     GRC       1983       2010 |
+ 792. |     IRL       1981       2010 |
+ 891. |     ITA       1970       2010 |
+ 946. |     JPN       1970       2010 |
+1113. |     LUX       1983       2010 |
+1211. |     NLD       1971       2010 |
+1267. |     NOR       1972       2010 |
+1352. |     NZL       2002       2010 |
+1434. |     PRT       1974       2010 |
+1540. |     SWE       1970       2010 |
+1674. |     USA       1994       2010 |
+      +-------------------------------+
+      name:  <unnamed>
+       log:  C:\Users\jackogle\Final-Project-Metrics\replication-code-and-data\T5regs_stats.log
+  log type:  text
+ paused on:  15 Mar 2022, 19:44:58
+----------------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  C:\Users\jackogle\Final-Project-Metrics\replication-code-and-data\T5regs_stats.log
+  log type:  text
+resumed on:  15 Mar 2022, 19:44:58
+
+    Variable |        Obs        Mean    Std. Dev.       Min        Max
+-------------+---------------------------------------------------------
+ country_tag |         22           1           0          1          1
+
+    Variable |        Obs        Mean    Std. Dev.       Min        Max
+-------------+---------------------------------------------------------
+        year |        667     1993.72    10.78639       1970       2010
+
+      +-------------------------------+
+      | country   year_min   year_max |
+      |-------------------------------|
+  38. |     AUS       1997       2010 |
+  90. |     AUT       1994       2010 |
+ 134. |     BEL       1983       2010 |
+ 182. |     CAN       1976       2010 |
+ 252. |     CHE       1991       2010 |
+ 341. |     DEU       1970       2010 |
+ 409. |     DNK       1983       2010 |
+ 453. |     ESP       1972       2010 |
+ 506. |     FIN       1970       2010 |
+ 574. |     FRA       1983       2010 |
+ 630. |     GBR       1984       2010 |
+ 684. |     GRC       1983       2010 |
+ 792. |     IRL       1981       2010 |
+ 891. |     ITA       1970       2010 |
+ 946. |     JPN       1970       2010 |
+1113. |     LUX       1983       2010 |
+1211. |     NLD       1971       2010 |
+1267. |     NOR       1972       2010 |
+1352. |     NZL       2002       2010 |
+1434. |     PRT       1974       2010 |
+1540. |     SWE       1970       2010 |
+1674. |     USA       1994       2010 |
+      +-------------------------------+
+      name:  <unnamed>
+       log:  C:\Users\jackogle\Final-Project-Metrics\replication-code-and-data\T5regs_stats.log
+  log type:  text
+ paused on:  15 Mar 2022, 19:44:58
+----------------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  C:\Users\jackogle\Final-Project-Metrics\replication-code-and-data\T5regs_stats.log
+  log type:  text
+resumed on:  15 Mar 2022, 19:44:59
 
     Variable |        Obs        Mean    Std. Dev.       Min        Max
 -------------+---------------------------------------------------------
@@ -616,13 +828,13 @@ resumed on:  15 Mar 2022, 16:56:07
       name:  <unnamed>
        log:  C:\Users\jackogle\Final-Project-Metrics\replication-code-and-data\T5regs_stats.log
   log type:  text
- paused on:  15 Mar 2022, 16:56:07
+ paused on:  15 Mar 2022, 19:44:59
 ----------------------------------------------------------------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------------------------------------------------------
       name:  <unnamed>
        log:  C:\Users\jackogle\Final-Project-Metrics\replication-code-and-data\T5regs_stats.log
   log type:  text
-resumed on:  15 Mar 2022, 16:56:07
+resumed on:  15 Mar 2022, 19:44:59
 
     Variable |        Obs        Mean    Std. Dev.       Min        Max
 -------------+---------------------------------------------------------
@@ -661,13 +873,13 @@ resumed on:  15 Mar 2022, 16:56:07
       name:  <unnamed>
        log:  C:\Users\jackogle\Final-Project-Metrics\replication-code-and-data\T5regs_stats.log
   log type:  text
- paused on:  15 Mar 2022, 16:56:07
+ paused on:  15 Mar 2022, 19:44:59
 ----------------------------------------------------------------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------------------------------------------------------
       name:  <unnamed>
        log:  C:\Users\jackogle\Final-Project-Metrics\replication-code-and-data\T5regs_stats.log
   log type:  text
-resumed on:  15 Mar 2022, 16:56:08
+resumed on:  15 Mar 2022, 19:44:59
 
     Variable |        Obs        Mean    Std. Dev.       Min        Max
 -------------+---------------------------------------------------------
@@ -706,13 +918,103 @@ resumed on:  15 Mar 2022, 16:56:08
       name:  <unnamed>
        log:  C:\Users\jackogle\Final-Project-Metrics\replication-code-and-data\T5regs_stats.log
   log type:  text
- paused on:  15 Mar 2022, 16:56:08
+ paused on:  15 Mar 2022, 19:44:59
 ----------------------------------------------------------------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------------------------------------------------------
       name:  <unnamed>
        log:  C:\Users\jackogle\Final-Project-Metrics\replication-code-and-data\T5regs_stats.log
   log type:  text
-resumed on:  15 Mar 2022, 16:56:08
+resumed on:  15 Mar 2022, 19:45:00
+
+    Variable |        Obs        Mean    Std. Dev.       Min        Max
+-------------+---------------------------------------------------------
+ country_tag |         22           1           0          1          1
+
+    Variable |        Obs        Mean    Std. Dev.       Min        Max
+-------------+---------------------------------------------------------
+        year |        340    1998.774    9.532364       1970       2010
+
+      +-------------------------------+
+      | country   year_min   year_max |
+      |-------------------------------|
+  38. |     AUS       1997       2010 |
+  96. |     AUT       2000       2010 |
+ 150. |     BEL       1999       2010 |
+ 203. |     CAN       1997       2010 |
+ 257. |     CHE       1996       2010 |
+ 363. |     DEU       1992       2010 |
+ 422. |     DNK       1996       2010 |
+ 485. |     ESP       2004       2010 |
+ 513. |     FIN       1977       2010 |
+ 586. |     FRA       1995       2010 |
+ 616. |     GBR       1970       2010 |
+ 705. |     GRC       2004       2010 |
+ 805. |     IRL       1994       2010 |
+ 907. |     ITA       1986       2010 |
+ 951. |     JPN       1975       2010 |
+1132. |     LUX       2002       2010 |
+1242. |     NLD       2002       2010 |
+1292. |     NOR       1997       2010 |
+1352. |     NZL       2002       2010 |
+1464. |     PRT       2004       2010 |
+1545. |     SWE       1975       2010 |
+1674. |     USA       1994       2010 |
+      +-------------------------------+
+      name:  <unnamed>
+       log:  C:\Users\jackogle\Final-Project-Metrics\replication-code-and-data\T5regs_stats.log
+  log type:  text
+ paused on:  15 Mar 2022, 19:45:00
+----------------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  C:\Users\jackogle\Final-Project-Metrics\replication-code-and-data\T5regs_stats.log
+  log type:  text
+resumed on:  15 Mar 2022, 19:45:00
+
+    Variable |        Obs        Mean    Std. Dev.       Min        Max
+-------------+---------------------------------------------------------
+ country_tag |         22           1           0          1          1
+
+    Variable |        Obs        Mean    Std. Dev.       Min        Max
+-------------+---------------------------------------------------------
+        year |        340    1998.774    9.532364       1970       2010
+
+      +-------------------------------+
+      | country   year_min   year_max |
+      |-------------------------------|
+  38. |     AUS       1997       2010 |
+  96. |     AUT       2000       2010 |
+ 150. |     BEL       1999       2010 |
+ 203. |     CAN       1997       2010 |
+ 257. |     CHE       1996       2010 |
+ 363. |     DEU       1992       2010 |
+ 422. |     DNK       1996       2010 |
+ 485. |     ESP       2004       2010 |
+ 513. |     FIN       1977       2010 |
+ 586. |     FRA       1995       2010 |
+ 616. |     GBR       1970       2010 |
+ 705. |     GRC       2004       2010 |
+ 805. |     IRL       1994       2010 |
+ 907. |     ITA       1986       2010 |
+ 951. |     JPN       1975       2010 |
+1132. |     LUX       2002       2010 |
+1242. |     NLD       2002       2010 |
+1292. |     NOR       1997       2010 |
+1352. |     NZL       2002       2010 |
+1464. |     PRT       2004       2010 |
+1545. |     SWE       1975       2010 |
+1674. |     USA       1994       2010 |
+      +-------------------------------+
+      name:  <unnamed>
+       log:  C:\Users\jackogle\Final-Project-Metrics\replication-code-and-data\T5regs_stats.log
+  log type:  text
+ paused on:  15 Mar 2022, 19:45:00
+----------------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  C:\Users\jackogle\Final-Project-Metrics\replication-code-and-data\T5regs_stats.log
+  log type:  text
+resumed on:  15 Mar 2022, 19:45:01
 
     Variable |        Obs        Mean    Std. Dev.       Min        Max
 -------------+---------------------------------------------------------
@@ -759,13 +1061,13 @@ resumed on:  15 Mar 2022, 16:56:08
       name:  <unnamed>
        log:  C:\Users\jackogle\Final-Project-Metrics\replication-code-and-data\T5regs_stats.log
   log type:  text
- paused on:  15 Mar 2022, 16:56:08
+ paused on:  15 Mar 2022, 19:45:01
 ----------------------------------------------------------------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------------------------------------------------------
       name:  <unnamed>
        log:  C:\Users\jackogle\Final-Project-Metrics\replication-code-and-data\T5regs_stats.log
   log type:  text
-resumed on:  15 Mar 2022, 16:56:08
+resumed on:  15 Mar 2022, 19:45:02
 
     Variable |        Obs        Mean    Std. Dev.       Min        Max
 -------------+---------------------------------------------------------
@@ -804,13 +1106,13 @@ resumed on:  15 Mar 2022, 16:56:08
       name:  <unnamed>
        log:  C:\Users\jackogle\Final-Project-Metrics\replication-code-and-data\T5regs_stats.log
   log type:  text
- paused on:  15 Mar 2022, 16:56:08
+ paused on:  15 Mar 2022, 19:45:02
 ----------------------------------------------------------------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------------------------------------------------------
       name:  <unnamed>
        log:  C:\Users\jackogle\Final-Project-Metrics\replication-code-and-data\T5regs_stats.log
   log type:  text
-resumed on:  15 Mar 2022, 16:56:09
+resumed on:  15 Mar 2022, 19:45:02
 
     Variable |        Obs        Mean    Std. Dev.       Min        Max
 -------------+---------------------------------------------------------
@@ -849,5 +1151,95 @@ resumed on:  15 Mar 2022, 16:56:09
       name:  <unnamed>
        log:  C:\Users\jackogle\Final-Project-Metrics\replication-code-and-data\T5regs_stats.log
   log type:  text
- paused on:  15 Mar 2022, 16:56:09
+ paused on:  15 Mar 2022, 19:45:02
+----------------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  C:\Users\jackogle\Final-Project-Metrics\replication-code-and-data\T5regs_stats.log
+  log type:  text
+resumed on:  15 Mar 2022, 19:45:03
+
+    Variable |        Obs        Mean    Std. Dev.       Min        Max
+-------------+---------------------------------------------------------
+ country_tag |         22           1           0          1          1
+
+    Variable |        Obs        Mean    Std. Dev.       Min        Max
+-------------+---------------------------------------------------------
+        year |        806    1990.872    11.85313       1970       2010
+
+      +-------------------------------+
+      | country   year_min   year_max |
+      |-------------------------------|
+  38. |     AUS       1997       2010 |
+  66. |     AUT       1970       2010 |
+ 121. |     BEL       1970       2010 |
+ 177. |     CAN       1971       2010 |
+ 231. |     CHE       1970       2010 |
+ 341. |     DEU       1970       2010 |
+ 396. |     DNK       1970       2010 |
+ 451. |     ESP       1970       2010 |
+ 506. |     FIN       1970       2010 |
+ 561. |     FRA       1970       2010 |
+ 616. |     GBR       1970       2010 |
+ 671. |     GRC       1970       2010 |
+ 792. |     IRL       1981       2010 |
+ 891. |     ITA       1970       2010 |
+ 946. |     JPN       1970       2010 |
+1100. |     LUX       1970       2010 |
+1210. |     NLD       1970       2010 |
+1265. |     NOR       1970       2010 |
+1352. |     NZL       2002       2010 |
+1430. |     PRT       1970       2010 |
+1540. |     SWE       1970       2010 |
+1674. |     USA       1994       2010 |
+      +-------------------------------+
+      name:  <unnamed>
+       log:  C:\Users\jackogle\Final-Project-Metrics\replication-code-and-data\T5regs_stats.log
+  log type:  text
+ paused on:  15 Mar 2022, 19:45:03
+----------------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  C:\Users\jackogle\Final-Project-Metrics\replication-code-and-data\T5regs_stats.log
+  log type:  text
+resumed on:  15 Mar 2022, 19:45:03
+
+    Variable |        Obs        Mean    Std. Dev.       Min        Max
+-------------+---------------------------------------------------------
+ country_tag |         22           1           0          1          1
+
+    Variable |        Obs        Mean    Std. Dev.       Min        Max
+-------------+---------------------------------------------------------
+        year |        806    1990.872    11.85313       1970       2010
+
+      +-------------------------------+
+      | country   year_min   year_max |
+      |-------------------------------|
+  38. |     AUS       1997       2010 |
+  66. |     AUT       1970       2010 |
+ 121. |     BEL       1970       2010 |
+ 177. |     CAN       1971       2010 |
+ 231. |     CHE       1970       2010 |
+ 341. |     DEU       1970       2010 |
+ 396. |     DNK       1970       2010 |
+ 451. |     ESP       1970       2010 |
+ 506. |     FIN       1970       2010 |
+ 561. |     FRA       1970       2010 |
+ 616. |     GBR       1970       2010 |
+ 671. |     GRC       1970       2010 |
+ 792. |     IRL       1981       2010 |
+ 891. |     ITA       1970       2010 |
+ 946. |     JPN       1970       2010 |
+1100. |     LUX       1970       2010 |
+1210. |     NLD       1970       2010 |
+1265. |     NOR       1970       2010 |
+1352. |     NZL       2002       2010 |
+1430. |     PRT       1970       2010 |
+1540. |     SWE       1970       2010 |
+1674. |     USA       1994       2010 |
+      +-------------------------------+
+      name:  <unnamed>
+       log:  C:\Users\jackogle\Final-Project-Metrics\replication-code-and-data\T5regs_stats.log
+  log type:  text
+ paused on:  15 Mar 2022, 19:45:03
 ----------------------------------------------------------------------------------------------------------------------------------------------------
